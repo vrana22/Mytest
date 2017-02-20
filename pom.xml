@@ -79,19 +79,22 @@
 			</plugin>
 		
     <plugin>
-      <groupId>io.fabric8</groupId>
-      <artifactId>docker-maven-plugin</artifactId>
-      <version>0.16.7</version>
-      <configuration>
-        <images>
-          <image>
-            <name>Mydockerimage</name>
-            <build>
-              <dockerFileDir>${project.basedir}</dockerFileDir>
-            </build>
-          </image>
-        </images>
-      </configuration>
+	<groupId>com.spotify</groupId>
+    <artifactId>docker-maven-plugin</artifactId>
+    <version>0.2.3</version>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>build</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <dockerDirectory>${project.basedir}</dockerDirectory>
+        <imageName>RestService/${project.artifactId}</imageName>
+    </configuration>
+
     </plugin>
         </plugins>
     </build>
